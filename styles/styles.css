@@ -1,0 +1,155 @@
+/* siempre que se quiera colocar un root los componentes deben llebar -- para inicializarlos*/
+:root{
+    --color-red: hsl(0, 78%, 62%);
+    --color-cyan: hsl(180, 62%, 55%);
+    --color-orange: hsl(34, 97%, 64%);
+    --color-blue: hsl(212, 86%, 64%);
+    --color-neutral-dark: hsl(234, 12%, 34%);
+    --color-neutral-gray:hsl(229, 6%, 66%);
+    --color-neutral-white: hsl(0, 0%, 98%);
+    --weight-light: 200;
+    --weight-regular: 400;
+    --weight-bold: 600;
+}
+
+/* RESECT */
+
+body{
+    Font-size: 15px;
+    font-family: 'Poppins', sans-serif; 
+    margin: 0;
+}
+
+h1,h2,p{
+    margin: 0;
+}
+
+
+/* se utiliza para simplificar el cálculo del tamaño de un elemento y garantizar un comportamiento más intuitivo y predecible en relación con el tamaño y el diseño de los elementos en una página web. */
+*{
+    box-sizing: border-box;
+
+}
+
+
+
+
+/* MOBILE */
+.body{
+    padding: 80px 30px;
+    /* 80px para colocar bordes arriba y abajo y 30px para color a los lados */
+    background-color: var(--color-neutral-white);
+}
+
+.header{
+    margin-bottom: 60px;
+    /* header es el padre de principal-tittle, principal-tittle__bold y  principal-text y con el margin-bottom se le da espacio hacia abajo */
+}
+
+
+.principal-tittle{
+    font-size: 1.5rem;
+    /* 1.5rem tiene un 50% mas de tamaño que se asigno en el body que es de 15px */
+    font-weight:var(--weight-light);
+    color: var(--color-neutral-dark);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.principal-tittle__bold{
+    font-weight: var(--weight-bold);
+}
+
+.principal-text{
+    color: var(--color-neutral-gray);
+    text-align: center;
+    line-height: 1.5;
+    /* line-height es el espacio que hay entre lineas de texto, el espaciado  */
+    font-size: 1rem;
+}
+
+/* CARD */
+.card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* flex-wrap: wrap para cuando no hay espacio en la ventana los elementos hagan un salto hacia abajo  */
+    gap: 25px;
+    /* gap: separacion en los elementos hijos */
+}
+
+.card{
+    width: min(100%, 300px);
+    padding: 20px;
+    /* esta 20px dentro de la card, es el espacio que hay entre el texto y el border de la card  */
+    background-color: white;
+    border-top: 4px solid var(--color-cyan);
+    border-radius: 5px;
+    box-shadow: 0 10px 20px 0 hsla(234, 12%,34%, 20%)
+
+}
+
+.card__tittle{
+    color: var(--color-neutral-dark);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.card__text{
+    color: var(--color-neutral-gray);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+.card__img{
+    width: 55px;
+    display: block;
+    margin-left: auto;
+}
+
+.card_red{
+    border-top-color: var(--color-red);
+}
+
+.card_orange{
+    border-top-color: var(--color-orange);
+}
+
+.card_blue{
+    border-top-color: var(--color-blue);
+}
+
+.attribution{
+    margin-top: 50px;
+}
+
+
+@media screen and (min-width: 1010px){
+    .card-container{
+        display: grid;
+        width: 950px;
+        /* el width del contenedor es de 950 para que tenga la forma que queremos y que cuando se estiere la pantalla no se alarge el espacio de los elementos, esto hace que tengan la forma cuando esta en 1010px */
+        margin-left: auto;
+        margin-right: auto;
+        /* margin-left: auto;
+        margin-right: auto; hacen que junto al width los elementos se ajusten en el centro y mantengan el diseño que queremos  */
+        grid-template-columns: repeat(3, 1fr);
+        /* fr es una medida flexible que solo existe en grid  */
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .card:nth-child(1), .card:nth-child(4){
+        /* se seleccionan 2 elementos el 1 y el 4  */
+        grid-row: span 2; 
+        /* grid-row: span 2; hace que ocupe 2 filas*/
+        align-self: center;
+        /* align-self: center; hace que se aline en el centro de las 2 filas */
+    }
+
+    .card:nth-child(3){
+        grid-row: 2 / 3;
+        /* hay 3 lineas separando las 2 filas, se coloca grid-row: 2 / 3; para acomodar la card de karma dentro de la linea 2 y linea 3 */
+        grid-column: 2 / 3;
+        /* y aca se hace lo mimos solo que de manera horizontal  */
+    }
+    
+}
